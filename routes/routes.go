@@ -10,8 +10,11 @@ func ConfigRoutes(router *gin.Engine) *gin.Engine {
 
 	movie := main.Group("movies")
 	{
-		movie.GET("/id", controllers.ShowMovie)
-
+		movie.GET("/:id", controllers.ShowMoviebyID)
+		movie.GET("/", controllers.ShowMovies)
+		movie.POST("/", controllers.CreateMovie)
+		movie.PUT("/:id", controllers.UpdateMovie)
+		movie.DELETE("/:id", controllers.DeleteMovie)
 	}
 	return router
 }
