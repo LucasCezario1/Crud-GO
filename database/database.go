@@ -27,6 +27,20 @@ func StartDB() {
 	migration.RunMigration(db)
 }
 
+func Closeconn() error {
+	config, err := db.DB()
+	if err != nil {
+		return err
+	}
+
+	err = config.Close()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // abrir conexao com o banco
 func Getdatabase() *gorm.DB {
 	return db
